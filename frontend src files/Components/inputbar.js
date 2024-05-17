@@ -1,31 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { BiHeart } from 'react-icons/bi';
+// import { BiSolidFilePdf } from "react-icons/bi";
+import { Link } from 'react-router-dom';
+// import icon from './icon.png';
+// import { PDFViewer, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 // import { withRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
-// import { HeartFill } from 'react-bootstrap-icons';
+import Cookies from 'js-cookie';
 
 function Ibar() {
-    //to update dabase with a like
-    // const likeRecipe = (id) => {
-    //     // Send a POST request to update like status
-    //     axios.post(`http://localhost:8080/updateRecipe/${id}`, { like: true })
-    //         .then(response => {
-    //             // Handle successful update if needed
-    //         })
-    //         .catch(error => {
-    //             // Handle error if needed
-    //             console.error('Error updating recipe:', error);
-    //         });
-    // };
-
-    ///enlarge the recipe
-    // const history = useHistory();
-
-    // const handleClick = () => {
-    //     history.push('/Page3');
-    // };
-
     //////////// to get recipes
     const [ingredients, setIngredients] = useState([""]);
 
@@ -131,8 +115,18 @@ function Ibar() {
         newIngredients.splice(index, 1);
         setIngredients(newIngredients);
     };
-     
-    
+
+    const handleLike = (recipeId) => {
+        const newLike = 1;
+        console.log(recipeId);
+        axios.put(`http://localhost:8080/updateLike/${recipeId}`, { like: newLike })
+          .then(response => {
+            console.log('Recipe liked successfully:', response.data);
+          })
+          .catch(err => console.error('Error updating like:', err));
+    };
+    //// to
+
     return (
         <div>
             <div className="container">
@@ -160,12 +154,14 @@ function Ibar() {
             <h1>Available Recipes</h1>
             <p className="recipe_matches">{getMatchedRecipes().length} matched recipes found.</p>
             {getMatchedRecipes().length > 0 ? (
-                <table className="table table-striped recipe-table">
+                <table className="table table-borderless recipe-table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Ingredients</th>
+                            <th scope="col">RECIPE NAME</th>
+                            {/* <th>pdf key lyeye</th> */}
+                            <th>mey bhi</th>
+                            {/* <th scope="col">Ingredients</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -173,17 +169,44 @@ function Ibar() {
                             <tr key={recipe._id}>
                                 <th scope="row">{index + 1}</th>
                                 <td>{recipe.Title}
-                                        {/* to display matched ingredients count */}
-                                    <div style={{ fontSize: '14px', lineHeight: '1.5' }}>
-                                        <p></p>
+                                    <div style={{ fontSize: '14px' }}>
                                         ({recipe.matchedIngredientCount} matched ingredients)
+                                        <Link to={`/RecipePage`}
+                                        onClick={() => {
+                                            const cookieRecipe = {
+                                                _id: recipe._id,
+                                                Title: recipe.Title,
+                                                Ingredients: recipe.Ingredients,
+                                                Instructions: recipe.Instructions,
+                                                Image_Name: recipe.Image_Name
+                                            };
+                                            Cookies.set('cookieRecipe', JSON.stringify(cookieRecipe));
+                                        }}
+                                        >
+                                            See Full Recipe
+                                        </Link>
                                     </div>
-                                    <a className="nav-link" href="/Page3">See Full Recipe</a>
                                 </td>
-                                <td>{recipe.Ingredients}</td>
-                                {/* <td><img src={require(`./FoodImages/${recipe.Image_Name}.jpg`)} alt="Recipe" /></td> */}
-                                <td className="heart-icon"><BiHeart/></td>
-                                {/* <td className="heart-icon"><BiHeart onClick={() => likeRecipe(recipe._id)} /></td> */}
+
+                                {/* <td><button className="btn btn-link pdf"><BiSolidFilePdf/></button></td> */}
+                                {/* <td>{recipe.Ingredients}</td> */}
+                                {/* <td ><button className="btn btn-link heart-icon" onClick={() => handleLike(recipe._id)}><BiHeart/></button></td> */}
+                                <td><button className="btn btn-link heart-icon" onClick={() => handleLike(recipe._id)}><BiHeart/></button></td>
+                                {/* <td>
+                                    {(() => {
+                                        try {
+                                        return (
+                                            <img
+                                            src={require(`./FoodImages/${recipe.Image_Name}.jpg`)}
+                                            alt="Recipe"
+                                            />
+                                        );
+                                        } catch (error) {
+                                        // console.error(error); // Log the error for debugging
+                                        return (<img src={icon} alt="Icon" />);
+                                        }
+                                    })()}
+                                    </td> */}
                             </tr>
                         ))}
                     </tbody>
