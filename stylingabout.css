@@ -1,0 +1,162 @@
+.navbar{
+    background-color:#000000;
+}
+.navbar2{
+    background-color:#3C0753;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.nav-link , .navbar-brand{
+    color: white;
+    font-family: lato;
+}
+.nav-item {
+    color: white;
+    font-family: lato;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+    font-family: lato;
+}
+.offcanvas{
+    background-color: #3C0753;
+    color: white;
+}
+
+
+
+.arh {
+    color: white;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    margin: 20px;
+    font-family: 'Lato', sans-serif; /* Use Lato font family */
+    font-weight: 400; /* Set font weight to 400 */
+    font-size: 24px; /* Set font size to 24 pixels */
+
+    width: 234px;
+    height: 24px;
+    top: 108%;
+    left: 18%
+}
+.imageicon{
+    width: 43px;
+    height: 40px;
+    top: 26px;
+    left: 1364px;
+    gap: 0px;
+    opacity: 0px;
+
+}
+.btn1 {
+    background-color: #A91515;
+    color: white;
+    padding: 6px;
+    margin: 10px;
+
+}
+.btn2 {
+    background-color:#5C1979;
+    color: white;
+    padding: 6px;
+    margin: auto;
+}
+.mainc{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow-y: scroll; 
+    background-color: black;
+    margin: 0; /* Reset default body margin */
+    padding: 0; /* Reset default body padding */
+  }
+
+  .about-container {
+    display: flex;
+    justify-content: space-around;
+
+  }
+  .developer {
+    margin-top: 5%;
+    text-align: center;
+    font-family: lato;
+    color:white;
+    font-size: large;
+  }
+  .image-section {
+    text-align: center;
+    color:white;
+  }
+  
+  .image-wrapper {
+    display: inline-block;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .circular-image {
+    margin-top:50px;
+    width: 200px; /* Increased size */
+    height: 200px; /* Increased size */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px; /* Adjusted position */
+  }
+  
+  /* .image-data { */
+    /* margin-top: 1px; Adjust as needed */
+  /* } */
+  .red-line {
+    width: 100%;
+    height: 40px; /* Adjust the height as needed */
+    background-color: #2A0000;
+  }
+  .blog-section {
+    /* margin-top: 5%; */
+    text-align: center;
+    color:white;
+    font-family: lato;
+  }
+  
+  .posts-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .post {
+    width: 30%; /* Adjust the width as needed for the number of posts you want in one row */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Add a border for the frame */
+    border-radius: 5px; /* Optional: Add border radius for rounded corners */
+  }
+  
+  .post img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .post h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color:white;
+    font-family: lato;
+  }
+
+  .image-data h2 {
+    color:white;
+    font-family: lato;
+  }
+  
+  .post p {
+    margin-top: 10px;
+    font-size: 20px;
+    color:white;
+    font-family: lato;
+  }
